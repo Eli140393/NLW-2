@@ -1,8 +1,8 @@
 import React from 'react';
 import PageHeader from '../../componentes/PageHeader';
+import TeacherItem from '../../componentes/TeacherItem';
 
 
-import whatsappIcon from  '../../assets/images/icons/whatsapp.svg'
 import  './styles.css';
 
 function TeacherList(){
@@ -28,31 +28,12 @@ function TeacherList(){
             </PageHeader>
 
             <main>
-                <article className="teacher-item">
-                    <header>
-                        <img src="https://avatars.githubusercontent.com/u/47793192?v=4" alt="Eliezer Defilicibus" />
-                        <div>
-                            <strong>Eliezer Defilicibus</strong>
-                            <span>Química</span>
-                        </div>
-                    </header>
+            <TeacherItem/>
+            <TeacherItem/>
+            <TeacherItem/>
+            <TeacherItem/>
+            <TeacherItem/>
 
-                    <p>
-                        Entusiasta das melhores tecnologias de química avançada.
-
-                        <br /><br />
-                        Apaixonado por explodir cois em laboratório e por mudar a vida das pessoas através das minhas experiências. Mais de 200.000 pessoas já passaram por uma das minhas explosões.
-                    </p>
-                    <footer>
-                        <p>
-                            Preço/hora
-                            <strong>R$ 80,00</strong>
-                        </p>
-                        <button type="button"> </button>
-                        <img src={whatsappIcon} alt="whatsapp" />
-                        Entrar em contato
-                    </footer>
-                </article>
             </main>
         </div>
     )
