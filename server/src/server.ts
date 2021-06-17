@@ -1,4 +1,5 @@
 import express from 'express';
+import routes from './routes';
 
 const app =  express();
 
@@ -13,8 +14,7 @@ app.use(express.json());
 //    Corpo (Request Body): Dados para criação ou atualização de um registro
 //    Route Params: identificar qual recurso eu quero atualizar ou deletar
 //    Query Params: Paginação, filtros, ordenação 
-app.post('/', (request, response) => {
-return response.json({message: 'Hello World'});  
+
+app.use(routes);
   
-});
 app.listen(3333);
