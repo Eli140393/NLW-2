@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { forHorizontalIOS } from "@react-navigation/stack/lib/typescript/src/TransitionConfigs/CardStyleInterpolators";
 import React from "react";
+import { ReactNode } from "react";
 import { Image, Text, View } from "react-native";
 import { BorderlessButton } from "react-native-gesture-handler";
 
@@ -14,11 +14,12 @@ import styles from './styles';
 
 interface PageHeaderProps {
     title: string;
+    headerRight?: ReactNode;
 }
 
 type homeScreenProp = StackNavigationProp<RootStackParamList> ;
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title,headerRight, children }) => {
 
     const navigation = useNavigation<homeScreenProp>();
 
@@ -34,8 +35,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
 
                 <Image source={logoImg} resizeMode="contain" />
             </View>
-
-            <Text style={styles.title}>{title}</Text>
+            <View style={styles.header}>
+            <Text style={styles.title}>{title}</Text>   
+            {headerRight}
+            </View>
+         
+            {children}
         </View>
     );
 }
