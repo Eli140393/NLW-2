@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 
@@ -12,14 +12,23 @@ import heartIcon from '../../assets/images/icons/heart.png';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../routes/AppStack";
 import {RectButton} from 'react-native-gesture-handler';
+import { useEffect } from "react";
+import api from "../../services/api";
+
 
 
 type homeScreenProp = StackNavigationProp<RootStackParamList> ;
 
 function Landing() {
-   
     const navigation = useNavigation<homeScreenProp>();
+    const [totalConnections, setTotalConnections] = useState(0);
 
+     useEffect(() =>{
+        api.get('connections').then(response => {
+            const {total} = response.data;
+            setTotalConnections(total);
+        })
+     }, []);
     function handleNavigationToGiveClassesPage(){
         navigation.navigate('GiveClasses');
     }
@@ -53,7 +62,7 @@ function Landing() {
         </View>
 
         <Text style={styles.totalConnections}>
-            Total de 285 conexões já realizadas {' '}
+            Total de {totalConnections} conexões já realizadas {' '}
             <Image source={heartIcon}/>
             </Text>
          </View>
